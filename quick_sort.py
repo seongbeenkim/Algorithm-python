@@ -15,7 +15,7 @@ def quick_sort(data_list):
     if len(data_list) <= 1:
         return data_list
     pivot = data_list[0]
-    left = [data_list[i] for i in data_list[1:] if pivot > data_list[i]]
-    right= [data_list[j] for j in data_list[1:] if pivot <= data_list[j]]
+    left = [i for i in data_list[1:] if pivot > i]
+    right= [j for j in data_list[1:] if pivot <= j]
     return quick_sort(left) + [pivot] + quick_sort(right)
 """
