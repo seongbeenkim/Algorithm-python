@@ -161,6 +161,7 @@ parameter : 변수
 variable : 변수
 parenthesis : 괄호
 properties : 성질
+sequence : 순열
 
 
 
