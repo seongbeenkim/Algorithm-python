@@ -1,26 +1,29 @@
 #https://www.acmicpc.net/problem/1759
 
-def check(password):
-    ja = 0
-    mo = 0
-    for x in password:
-        if x in 'aeiou':
-            mo += 1
-        else:
-            ja += 1
-    return ja >= 2 and mo >= 1
+import sys
 
-def go(n, alpha, password, i):
-    if len(password) == n:
-        if check(password):
-            print(password)
-        return
-    if i == len(alpha):
-        return
-    go(n, alpha, password+alpha[i], i+1)
-    go(n, alpha, password, i+1)
+sys.setrecursionlimit(10**6)
 
-n,m = map(int,input().split())
-a = input().split()
+l, c = map(int,sys.stdin.readline().split())
+a = sys.stdin.readline().split()
 a.sort()
-go(n, a, "", 0)
+
+def go(index,password):
+    if len(password) == l:
+        consonant = 0
+        vowel = 0
+        for i in password:
+            if i in "aeiou":
+                vowel += 1
+            else:
+                consonant +=1
+        if vowel >= 1 and consonant >= 2:
+            sys.stdout.write(password + "\n")
+            return
+
+    if index >= c:
+        return
+
+    go(index+1, password + a[index])
+    go(index+1,password)
+go(0,"")
