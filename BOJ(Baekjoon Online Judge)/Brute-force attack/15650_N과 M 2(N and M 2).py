@@ -2,7 +2,6 @@
 import sys
 
 n, m = map(int,sys.stdin.readline().split())
-c = [False] * (n+1)
 ans = [0] * m
 
 def go(index,n,m,l):

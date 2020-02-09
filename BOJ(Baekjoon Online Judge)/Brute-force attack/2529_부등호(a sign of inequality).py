@@ -1,31 +1,28 @@
 #https://www.acmicpc.net/problem/2529
-def ok(num):
-    for i in range(n):
-        if a[i] == '<':
-            if num[i] > num[i+1]:
-                return False
-        elif a[i] == '>':
-            if num[i] < num[i+1]:
-                return False
-    return True
 
-def go(index, num):
-    if index == n+1:
-        if ok(num):
-            ans.append(num)
-        return
-    for i in range(10):
-        if check[i]:
-            continue
-        check[i] = True
-        go(index+1, num+str(i))
-        check[i] = False
-
-n = int(input())
-a = input().split()
+import sys
+sys.setrecursionlimit(10**6)
+n = int(sys.stdin.readline())
+k = sys.stdin.readline().rstrip().split(" ")
 ans = []
 check = [False] * 10
-go(0, '')
+def go(index,num):
+    if index == n+1:
+        for i in range(n):
+            if k[i] == "<":
+                if num[i] > num[i+1]:
+                    return
+            else:
+                if num[i] < num[i+1]:
+                    return
+        ans.append(num)
+
+    for i in range(10):
+        if check[i] == True:
+            continue
+        check[i] = True
+        go(index+1,num+str(i))
+        check[i] = False
+go(0,"")
 ans.sort()
-print(ans[-1])
-print(ans[0])
+print(ans[-1] + "\n" + ans[0])
