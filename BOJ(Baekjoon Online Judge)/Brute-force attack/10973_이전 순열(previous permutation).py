@@ -5,7 +5,7 @@ import sys
 n = int(sys.stdin.readline())
 a = list(map(int,sys.stdin.readline().split()))
 
-def go():
+def previous_permutation():
     i = n - 1
 
     while i > 0 and a[i] > a[i-1]:
@@ -29,7 +29,7 @@ def go():
 
     return True
 
-if go():
+if previous_permutation():
     print(" ".join(map(str,a)))
 else:
     print(-1)

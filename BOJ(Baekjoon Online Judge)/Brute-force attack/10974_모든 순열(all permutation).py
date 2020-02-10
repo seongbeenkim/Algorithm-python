@@ -24,7 +24,7 @@ import sys
 n = int(sys.stdin.readline())
 a = list(range(1,n+1))
 
-def go():
+def next_permutation():
     i = n - 1
 
     while i > 0 and a[i] <= a[i-1]:
@@ -39,7 +39,8 @@ def go():
 
     a[j], a[i-1] = a[i-1], a[j]
 
-    j = n - 1K
+    j = n - 1
+    while i < j:
         a[i], a[j] = a[j], a[i]
         i+=1
         j-=1
@@ -48,5 +49,5 @@ def go():
 
 while True:
     print(" ".join(map(str,a)))
-    if not go():
+    if not next_permutation():
         break
