@@ -4,7 +4,7 @@ import sys
 
 n = int(sys.stdin.readline())
 a = list(map(int,sys.stdin.readline().split()))
-max = [0] * n
+
 def go():
     i = n - 1
 
