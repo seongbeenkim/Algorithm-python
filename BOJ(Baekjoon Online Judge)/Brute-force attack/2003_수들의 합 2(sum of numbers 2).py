@@ -1,24 +1,27 @@
 #https://www.acmicpc.net/problem/2003
 
-n,s = map(int,input().split())
-a = list(map(int,input().split()))
-left = right = 0
-sum = a[0]
-ans = 0
-while left <= right and right < n:
-    if sum < s:
-        right += 1
-        if right < n:
-            sum += a[right]
-    elif sum == s:
-        ans += 1
-        right += 1
-        if right < n:
-            sum += a[right]
-    elif sum > s:
+import sys
+
+n, m = list(map(int,sys.stdin.readline().split()))
+a = list(map(int,sys.stdin.readline().split()))
+left = 0
+right = 0
+sum = a[left]
+cnt = 0
+while (left <= right and right <= n-1):
+    if sum > m:
         sum -= a[left]
         left += 1
         if left > right and left < n:
             right = left
             sum = a[left]
-print(ans)
+    elif sum < m:
+        right += 1
+        if right <= n-1:
+            sum += a[right]
+    else:
+        cnt += 1
+        right += 1
+        if right <= n-1:
+            sum += a[right]
+print(cnt)
