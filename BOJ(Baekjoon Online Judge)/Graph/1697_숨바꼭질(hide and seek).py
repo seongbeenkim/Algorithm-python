@@ -3,7 +3,7 @@
 import sys
 from collections import deque
 
-MAX = 100001
+MAX = 200000
 n, k = map(int,sys.stdin.readline().strip().split())
 check = [False] * (MAX+1)
 d = [-1] * (MAX+1)
