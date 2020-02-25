@@ -56,3 +56,40 @@ print()
 in_order(0)
 print()
 post_order(0)
+
+# dict
+"""
+def pre_order(i): # Parent - Left - Right
+    if i == ".":
+        return
+    print(i, end = "")
+    pre_order(tree[i].left)
+    pre_order(tree[i].right)
+
+def in_order(i): # Left - Parent - Right
+    if i == ".":
+        return
+    in_order(tree[i].left)
+    print(i, end="")
+    in_order(tree[i].right)
+
+def post_order(i): # Left - Right - Parent
+    if i == ".":
+        return
+    post_order(tree[i].left)
+    post_order(tree[i].right)
+    print(i, end="")
+
+n = int(sys.stdin.readline())
+tree = {}
+
+for i in range(n):
+    data, left, right = sys.stdin.readline().split()
+    tree[data] = Node(left,right)
+
+pre_order("A")
+print()
+in_order("A")
+print()
+post_order("A")
+"""
