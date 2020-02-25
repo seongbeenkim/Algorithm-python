@@ -1,43 +1,58 @@
 #https://www.acmicpc.net/problem/1991
 
 import sys
-sys.stdin = open("input.txt", 'r')
+sys.setrecursionlimit(10**5)
+class Node():
+    def __init__(self, left = None, right = None):
+        self.left = left
+        self.right = right
 
-def preorder(node):
-    print(node.item, end='')
-    if node.lchild != '.':
-        preorder(tree[node.lchild])
-    if node.rchild != '.':
-        preorder(tree[node.rchild])
+def pre_order(i): # Parent - Left - Right
+    if i == -1:
+        return
+    print(chr(i+A), end = "")
+    pre_order(tree[i].left)
+    pre_order(tree[i].right)
 
-def inorder(node):
-    if node.lchild != '.':
-        inorder(tree[node.lchild])
-    print(node.item, end='')
-    if node.rchild != '.':
-        inorder(tree[node.rchild])
+def in_order(i): # Left - Parent - Right
+    if i == -1:
+        return
+    in_order(tree[i].left)
+    print(chr(i+A), end="")
+    in_order(tree[i].right)
 
-def postorder(node):
-    if node.lchild != '.':
-        postorder(tree[node.lchild])
-    if node.rchild != '.':
-        postorder(tree[node.rchild])
-    print(node.item, end='')
+def post_order(i): # Left - Right - Parent
+    if i == -1:
+        return
+    post_order(tree[i].left)
+    post_order(tree[i].right)
+    print(chr(i+A), end="")
 
-class Node:
-    def __init__(self, item, lchild, rchild):
-        self.item = item
-        self.lchild = lchild
-        self.rchild = rchild
+n = int(sys.stdin.readline())
+tree = [Node() for _ in range(26)] # A ~ Z : 26
 
-N = int(input())
-tree = {}
-for i in range(N):
-    data = input().split()
-    tree[data[0]] = Node(item=data[0], lchild=data[1], rchild=data[2])
+A = ord("A")
+null = ord(".")
 
-preorder(tree['A'])
+for i in range(n):
+    data, left, right = map(ord,sys.stdin.readline().split())  # A ~ Z (65 ~ 90)
+
+    if left == null:
+        left = -1
+    else:
+        left -= A
+
+    if right == null:
+        right = -1
+    else:
+        right -= A
+    data -= A  # A ~ Z (65 ~ 90) => (0 ~ 25) for tree[]
+
+    tree[data].left = left
+    tree[data].right = right
+
+pre_order(0)
 print()
-inorder(tree['A'])
+in_order(0)
 print()
-postorder(tree['A'])
+post_order(0)
