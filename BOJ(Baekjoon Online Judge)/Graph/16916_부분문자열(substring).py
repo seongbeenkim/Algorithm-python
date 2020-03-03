@@ -30,7 +30,6 @@ def match(s,p):
                 return 1
         if i+m < n:
             hash_s = hash_s - (ord(s[i])*first) % mod
-            hash_s = (hash_s + mod) % mod
             hash_s = ((hash_s * base) % mod + ord(s[i+m])) % mod
     return 0
 
