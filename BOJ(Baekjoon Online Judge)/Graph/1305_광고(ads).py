@@ -15,7 +15,7 @@ def pre_processing():
             fail[i] = j+1
             j += 1
         else:
-            j = 0
+            fail[i] = 0
 
 pre_processing()
 print(l-fail[l-1])
