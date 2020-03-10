@@ -23,21 +23,20 @@ def switch(x,s):
         s[x] ^= 1
         s[x - 1] ^= 1
 
-def go(x,arr,cnt):
+def go(arr,cnt):
 
-    if x == n:
+    for i in range(1,n):
+        if arr[i-1] != result[i-1]:
+            switch(i,arr)
+            cnt += 1
+
+    if arr == result:
         return cnt
-
-    if result[x-1] == arr[x-1]:
-        cnt = go(x+1,arr,cnt)
     else:
-        switch(x,arr)
-        cnt = go(x+1,arr,cnt+1)
+        return -1
 
-    return cnt
-
-clicked_cnt = go(1,clicked,1)
-unclicked_cnt = go(1,a,0)
+clicked_cnt = go(clicked,1)
+unclicked_cnt = go(a,0)
 
 if result == clicked and result == a:
     print(min(clicked_cnt,unclicked_cnt))
