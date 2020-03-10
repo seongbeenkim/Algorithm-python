@@ -11,10 +11,11 @@ for k in range(1<<n):
         cnt = 0
         for i in range(n):
             c = a[i][j]
-            if c == "T":
-                c = "H"
-            else:
-                c = "T"
+            if (1<<i) & k:
+                if c == "T":
+                    c = "H"
+                else:
+                    c = "T"
             if c == "T":
                 cnt += 1
         sum += min(n-cnt,cnt)
