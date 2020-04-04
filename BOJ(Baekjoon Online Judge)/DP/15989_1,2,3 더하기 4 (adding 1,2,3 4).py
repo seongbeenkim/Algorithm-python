@@ -17,4 +17,3 @@ for i in range(3,10001):
 for i in range(n):
     a = int(sys.stdin.readline())
     print(d[a])
-`
