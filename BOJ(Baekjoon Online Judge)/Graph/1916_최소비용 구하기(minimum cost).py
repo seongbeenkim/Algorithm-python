@@ -17,15 +17,14 @@ start, end = map(int,sys.stdin.readline().split())
 dist[start] = 0
 q = []
 heapq.heappush(q,[0,start])
-check[start] = True
 while q:
     c, s = heapq.heappop(q)
     if dist[s] < c:
         continue
-    if check[s] == True:
+    if check[s] == False:
         for e, t in a[s]:
             if dist[s] != INF and dist[e] > dist[s] + t:
                 dist[e] = dist[s] + t
                 heapq.heappush(q,[dist[e],e])
-                check[e] = True
+                check[s] = True
 print(dist[end])
