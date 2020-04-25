@@ -4,7 +4,37 @@ import sys
 from math import ceil, log
 
 n, m, k = map(int,sys.stdin.readline().split())
+num = [0] + [int(sys.stdin.readline()) for _ in range(n)]
+tree = [0] * (n+1)
+#fenwick-tree
+def update(i,diff):
+    while i <= n:
+        tree[i] += diff
+        i += (i & -i)
+
+for i in range(1,n+1):
+    update(i,num[i])
+
+def sum(i):
+    ans = 0
+    while i > 0:
+        ans += tree[i]
+        i -= (i&-i)
+    return ans
+for _ in range(m+k):
+    a,b,c = map(int,sys.stdin.readline().split())
+    if a == 1:
+        diff = c - num[b]
+        num[b] = c
+        update(b,diff)
+    else:
+        print(sum(c)-sum(b-1))
+
+#segment-tree
+"""
+n, m, k = map(int,sys.stdin.readline().split())
 num = [int(sys.stdin.readline()) for _ in range(n)]
+
 h = ceil(log(n,2))
 tree_size = (1<<(h+1))
 INF = 10**9
@@ -52,3 +82,4 @@ for i in range(m+k):
         update(1,0,n-1,b-1,diff)
     else:
         print(query(1,0,n-1,b - 1, c - 1))
+"""
