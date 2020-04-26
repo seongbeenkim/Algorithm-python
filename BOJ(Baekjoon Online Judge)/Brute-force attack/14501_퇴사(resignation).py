@@ -19,3 +19,19 @@ def go(day,sum):
 
     return max(a,b)
 print(go(1,0))
+"""
+def go(i,cnt):
+    ans = 0
+    if i == n:
+        if t[i] != 1:
+            return cnt
+        else:
+            return cnt+p[i]
+    if i > n:
+        return cnt
+
+    if i+t[i] <= n+1:
+        ans = max(ans,go(i+t[i],cnt+p[i]))
+    ans = max(ans,go(i+1,cnt))
+    return ans
+"""
