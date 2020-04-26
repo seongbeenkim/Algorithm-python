@@ -1,7 +1,23 @@
 #https://www.acmicpc.net/problem/6603
 
 import sys
+def go(i,lotto):
+    if len(lotto) == 6:
+        print(*lotto)
+        return
+    if i >= len(s):
+        return
+    go(i+1,lotto+[s[i]])
+    go(i+1,lotto)
 
+while True:
+    k, *s = list(map(int,sys.stdin.readline().split()))
+    if k == 0:
+        break
+    go(0,[])
+    print()
+
+""" 
 def next_permutation(a):
     i = len(a)-1
     while i > 0 and a[i] <= a[i-1]:
@@ -33,3 +49,4 @@ while True:
     for i in ans:
         print(" ".join(map(str,i)))
     print()
+"""
