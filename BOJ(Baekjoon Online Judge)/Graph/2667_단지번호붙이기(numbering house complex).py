@@ -1,7 +1,7 @@
 #https://www.acmicpc.net/problem/2667
 
 import sys,queue
-
+from collections import deque
 sys.setrecursionlimit(10*6)
 
 n = int(sys.stdin.readline())
@@ -25,18 +25,18 @@ def dfs(x,y,c):
     return c
 
 def bfs(x,y,c):
-    q = queue.Queue()
-    q.put((x,y))
+    q = deque()
+    q.append((x,y))
     check[x][y] = True
-    while not q.empty():
-        x, y = q.get()
+    while q:
+        x, y = q.popleft()
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
             if nx >= 0 and nx < n and ny >= 0 and ny < n:
                 if a[nx][ny] == 1 and check[nx][ny] == False:
                     check[nx][ny] = True
-                    q.put((nx,ny))
+                    q.append((nx,ny))
                     c += 1
     return c
 
