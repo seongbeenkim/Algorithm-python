@@ -1,6 +1,8 @@
 #https://www.acmicpc.net/problem/1707
 
-import sys, queue
+import sys
+from collections import deque
+
 sys.setrecursionlimit(10**6)
 def dfs(x,c):
     check[x] = c
@@ -13,16 +15,16 @@ def dfs(x,c):
     return True
 
 def bfs(x,c):
-    q = queue.Queue()
-    q.put(x)
+    q = deque()
+    q.append(x)
     check[x] = c
-    while not q.empty():
-        x = q.get()
+    while q:
+        x = q.popleft()
         c = check[x]
         for i in a[x]:
             if check[i] == 0:
                 check[i] = 3-c
-                q.put(i)
+                q.append(i)
             elif check[i] == check[x]:
                 return False
     return True
