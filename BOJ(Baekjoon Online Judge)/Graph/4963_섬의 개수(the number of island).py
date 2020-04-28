@@ -1,6 +1,8 @@
 #https://www.acmicpc.net/problem/4963
 
-import sys, queue
+import sys
+from collections import deque
+
 sys.setrecursionlimit(10**6)
 
 dx = [-1,-1,0,1,1,1,0,-1]
@@ -19,18 +21,18 @@ def dfs(x,y,cnt):
     return cnt
 
 def bfs(x,y,cnt):
-    q = queue.Queue()
-    q.put((x,y))
+    q = deque()
+    q.append((x,y))
     check[x][y] = True
-    while not q.empty():
-        x, y = q.get()
+    while q:
+        x, y = q.popleft()
         for i in range(8):
             nx = x + dx[i]
             ny = y + dy[i]
 
             if 0 <= nx < n and 0 <= ny < m:
                 if check[nx][ny] == False and a[nx][ny] == 1:
-                    q.put((nx,ny))
+                    q.append((nx,ny))
                     cnt += 1
                     check[nx][ny] = True
     return cnt
