@@ -3,9 +3,8 @@
 import sys
 from collections import deque
 
-MAX = 1000
 n = int(sys.stdin.readline())
-dist = [[-1] * (MAX+1) for _ in range(MAX+1)]
+dist = [[-1] * (n+1) for _ in range(n+1)]
 
 def bfs(s,c):
     q = deque()
@@ -14,11 +13,11 @@ def bfs(s,c):
     while q:
         s,c = q.popleft()
 
-        if s <= MAX and dist[s][s] == -1:
+        if s <= n and dist[s][s] == -1:
             q.append((s,s))
             dist[s][s] = dist[s][c] + 1
 
-        if s+c <= MAX and dist[s+c][c] == -1:
+        if s+c <= n and dist[s+c][c] == -1:
             q.append((s+c,c))
             dist[s+c][c] = dist[s][c] + 1
 
