@@ -33,3 +33,30 @@ def bfs(i):
 
 bfs(n)
 print(dist[k])
+
+"""
+n,k = map(int,sys.stdin.readline().split())
+MAX = max(n,k) * 2
+
+d = [-1] * (MAX+1)
+
+q = deque()
+q.append(n)
+d[n] = 0
+
+while q:
+    x = q.popleft()
+    temp = 2*x
+
+    while temp <= MAX and d[temp] == -1 and temp != 0:
+        q.append(temp)
+        d[temp] = d[x]
+        temp *= 2
+
+    for i in [x-1,x+1]:
+        if 0 <= i <= MAX:
+            if d[i] == -1:
+                d[i] = d[x] + 1
+                q.append(i)
+print(d[k])
+"""
