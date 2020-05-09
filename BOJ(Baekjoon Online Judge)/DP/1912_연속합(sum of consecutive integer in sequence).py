@@ -2,6 +2,17 @@
 
 import sys
 
+n = int(sys.stdin.readline())
+a = list(map(int,sys.stdin.readline().split()))
+d = [0] * n
+d[0] = a[0]
+for i in range(1,n):
+    d[i] = a[i]
+    if d[i-1] > 0:
+        d[i] += d[i-1]
+print(max(d))
+
+"""
 t = int(sys.stdin.readline())
 n = [0] + list(map(int,sys.stdin.readline().split()))
 d = [0] * (t+1)
@@ -16,3 +27,4 @@ for i in d[1:]:
     if ans < i:
         ans = i
 print(ans)
+"""
