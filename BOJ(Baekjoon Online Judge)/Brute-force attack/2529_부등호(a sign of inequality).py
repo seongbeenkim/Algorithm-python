@@ -26,3 +26,26 @@ def go(index,num):
 go(0,"")
 ans.sort()
 print(ans[-1] + "\n" + ans[0])
+
+"""
+n = int(sys.stdin.readline())
+a = list(sys.stdin.readline().split())
+ans = []
+def go(index,num,candi):
+    if len(candi) == n+1:
+        ans.append(candi)
+        return
+    if index >= n:
+        return
+    for i in range(10):
+        if str(i) not in candi:
+            if a[index] == "<" and num < i:
+                go(index+1,i,candi+str(i))
+            elif a[index] == ">" and num > i:
+                go(index + 1, i, candi + str(i))
+
+for i in range(10):
+    go(0,i,str(i))
+
+print(ans[-1],ans[0],sep="\n")
+"""
