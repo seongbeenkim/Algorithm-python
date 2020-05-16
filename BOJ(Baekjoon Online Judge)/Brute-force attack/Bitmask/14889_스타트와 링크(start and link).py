@@ -83,3 +83,36 @@ while True:
         break
 print(ans)
 """
+
+
+"""
+n = int(sys.stdin.readline())
+s = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
+
+def go(index,first,second):
+    if index == n:
+        if len(first) != n//2:
+            return -1
+        if len(second) != n//2:
+            return -1
+        f1 = 0
+        f2 = 0
+        for i in range(n//2):
+            for j in range(n//2):
+                if i == j:
+                    continue
+                f1 += s[first[i]][first[j]]
+                f2 += s[second[i]][second[j]]
+        return abs(f1-f2)
+    ans = 100*20*20
+    t1 = go(index+1,first+[index],second)
+    if t1 != -1:
+        ans = min(ans,t1)
+    t2 = go(index+1,first,second+[index])
+    if t2 != -1:
+        ans = min(ans,t2)
+    return ans
+
+print(go(0,[],[]))
+
+"""
