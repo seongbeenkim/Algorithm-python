@@ -8,7 +8,7 @@ a = list(map(int,sys.stdin.readline().split()))
 def previous_permutation():
     i = n - 1
 
-    while i > 0 and a[i] > a[i-1]:
+    while i > 0 and a[i] >= a[i-1]:
         i -= 1
 
     if i <= 0:
