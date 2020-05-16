@@ -30,3 +30,56 @@ for i in range(1 << ((n//2)-1), 1<<n):
     if ans > res:
         ans = res
 print(ans)
+
+
+"""
+def next_permutation(a):
+    i = len(a)-1
+    while i > 0 and a[i-1] >= a[i]:
+        i -= 1
+    if i <= 0:
+        return False
+    j = len(a)-1
+    while a[i-1] >= a[j]:
+        j -= 1
+    a[i-1],a[j] = a[j],a[i-1]
+
+    j = len(a)-1
+    while i < j:
+        a[i],a[j] = a[j],a[i]
+        i+=1
+        j-=1
+    return True
+
+n = int(sys.stdin.readline())
+s = [list(map(int,sys.stdin.readline().split())) for _ in range(n)]
+a = []
+for i in range(n//2):
+    a.append(0)
+for i in range(n//2,n):
+    a.append(1)
+
+ans = 100*20*20
+while True:
+    first_team = []
+    second_team = []
+    first = 0
+    second = 0
+    for i in range(n):
+        if a[i] > 0:
+            first_team.append(i)
+        else:
+            second_team.append(i)
+
+    for i in range(n//2):
+        for j in range(n//2):
+            if i == j:
+                continue
+            first += s[first_team[i]][first_team[j]]
+            second += s[second_team[i]][second_team[j]]
+
+    ans = min(abs(first-second),ans)
+    if not next_permutation(a):
+        break
+print(ans)
+"""
