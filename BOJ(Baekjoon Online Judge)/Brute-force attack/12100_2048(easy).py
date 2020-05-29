@@ -26,19 +26,19 @@ def move(map,dir):
             if map[i][j] != 0:
                 x,y = i,j
 
-                value = map[i][j]
-                map[i][j] = 0
-
                 nx = i+dx[dir]
                 ny = j+dy[dir]
 
                 while 0 <= nx < n and 0 <= ny < n:
-                    if value == map[nx][ny] and can_merged[nx][ny]:
+                    if map[x][y] == map[nx][ny] and can_merged[nx][ny]:
                         can_merged[nx][ny] = False
-                        x,y = nx,ny
+                        map[nx][ny] += map[x][y]
+                        map[x][y] = 0
                         break
 
                     elif map[nx][ny] == 0:
+                        map[nx][ny] = map[x][y]
+                        map[x][y] = 0
                         x = nx
                         y = ny
                         nx += dx[dir]
@@ -46,8 +46,6 @@ def move(map,dir):
 
                     else:
                         break
-
-                map[x][y] = map[x][y] + value
 
     return map
 
