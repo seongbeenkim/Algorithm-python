@@ -1,5 +1,6 @@
 #https://www.acmicpc.net/problem/11066
-
+#https://mm5-gnap.tistory.com/64
+#https://aerocode.net/109
 import sys
 sys.setrecursionlimit(10**6)
 t = int(sys.stdin.readline())
