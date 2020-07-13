@@ -13,7 +13,7 @@ for i in range(2,n):
     for j in range(10):
         for k in range(j+1):
             d[i][j] += d[i-1][k]
-        d[i][j] %= mod
+            d[i][j] %= mod
 """
 for i in range(2,n):
     for j in range(10):
