@@ -28,3 +28,14 @@ while mod <= n:
 ans += (n-(mod//10)+1) * length
 print(ans)
 """
+
+"""
+n = int(sys.stdin.readline())
+ans = 0
+limit = len(str(n))
+
+for i in range(1,limit):
+    ans += i*(9*pow(10,i-1))
+ans += limit*(n-pow(10,limit-1)+1)
+print(ans)
+"""
