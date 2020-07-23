@@ -15,8 +15,9 @@ for i in range(T):
     for i in range(3,n+1):
         d[i] = d[i-1] + d[i-2] + d[i-3]
     print(d[n])
-"""
+
 # Top-down
+"""
 def dp(n):
     if n <= 2:
         if n <= 1:
@@ -36,4 +37,23 @@ for i in range(T):
     d[2] = 2
     n = int(sys.stdin.readline())
     print(dp(n))
+"""
+
+# Brute force
+"""
+t = int(sys.stdin.readline())
+def check(i,n):
+    global ans
+    if i == n:
+        ans += 1
+    if i > n:
+        return
+    check(i+1,n)
+    check(i+2,n)
+    check(i+3,n)
+for i in range(t):
+    n = int(sys.stdin.readline())
+    ans = 0
+    check(0,n)
+    print(ans)
 """
