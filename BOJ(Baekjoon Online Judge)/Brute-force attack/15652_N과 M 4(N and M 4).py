@@ -13,3 +13,18 @@ def go(index,start,n,m):
         ans[index] = i
         go(index+1,ans[index],n,m)
 go(0,1,n,m)
+
+"""
+n, m = map(int,sys.stdin.readline().split())
+
+def go(index,candi):
+    if len(candi) == m:
+        print(*candi)
+        return
+    for i in range(1,n+1):
+        if candi[index] <= i:
+            go(index+1,candi+[i])
+
+for i in range(1,n+1):
+    go(0,[i])
+"""
