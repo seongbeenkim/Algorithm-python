@@ -16,7 +16,7 @@ go(0,n,m,0)
 """
 n, m = map(int,sys.stdin.readline().split())
 
-def go(index,candi):
+def go(candi):
 
     if len(candi) == m:
         print(*candi)
@@ -31,8 +31,8 @@ def go(index,candi):
                     break
             if not is_bigger:
                 continue
-            go(index,candi+[i])
+            go(candi+[i])
 
 for i in range(1,n+1):
-    go(i,[i])
+    go([i])
 """
