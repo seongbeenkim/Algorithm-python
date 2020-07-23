@@ -5,7 +5,7 @@ import sys
 n = int(sys.stdin.readline())
 s = [list(map(int,sys.stdin.readline().split())) for i in range(n)]
 ans = 2147483647
-for i in range(1 << ((n//2)-1), 1<<n):
+for i in range(1 << ((n//2)-1), 1<<n): # (1,1<<n)으로 해도 상관 x
     start = []
     link = []
     for j in range(n):
