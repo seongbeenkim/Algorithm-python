@@ -12,7 +12,7 @@ check = [False] * (n+1)
 
 def go(index,seq):
     if index == m and len(seq) == m:
-        ans.append(tuple(seq))
+        ans.append(tuple(seq))  # append(seq) 하지 않고 tuple 쓰는 이유 https://stackoverflow.com/questions/37136878/list-unhashable-but-tuple-hashable
         return
     if index >= len(a):
         return
