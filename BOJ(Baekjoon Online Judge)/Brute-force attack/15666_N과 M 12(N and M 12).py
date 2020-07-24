@@ -32,3 +32,27 @@ def go(index,start,a):
         go(index + 1, i,a)
 go(0,0,a)
 """
+
+"""
+n, m = map(int,sys.stdin.readline().split())
+a = list(map(int,sys.stdin.readline().split()))
+a.sort()
+
+candi = []
+def go(index,start,ans):
+    global candi
+    if len(ans) == m:
+        candi.append(tuple(ans))
+        return
+
+    if index >= n:
+        return
+
+    for i in range(start,n):
+        go(index+1,i,ans + [a[i]])
+go(0,0,[])
+ans = list(set(candi))
+ans.sort()
+for i in ans:
+    print(*i)
+"""
