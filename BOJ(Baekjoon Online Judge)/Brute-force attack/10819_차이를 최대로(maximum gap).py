@@ -4,7 +4,7 @@ import sys
 
 n = int(sys.stdin.readline())
 a = list(map(int,sys.stdin.readline().split()))
-a.sort()
+a.sort() # 모든 순열을 위해서 필수
 
 def next_permutation():
     i = n-1
