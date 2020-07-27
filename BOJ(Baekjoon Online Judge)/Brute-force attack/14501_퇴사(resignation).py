@@ -35,3 +35,19 @@ def go(i,cnt):
     ans = max(ans,go(i+1,cnt))
     return ans
 """
+
+"""
+ans = 0
+def go(index,profit,v,n):
+    global ans
+    if index > n:
+        temp = index-t[v]
+        if t[v] + temp -1 > n:
+            profit -= p[v]
+        ans = max(ans,profit)
+        return
+    go(index+t[index],profit+p[index],index,n)
+    go(index+1,profit,index,n)
+go(1,0,0,n)
+print(ans)
+"""
