@@ -49,3 +49,44 @@ for i in range(10):
 
 print(ans[-1],ans[0],sep="\n")
 """
+
+"""
+n = int(sys.stdin.readline())
+op = sys.stdin.readline().split()
+check = [False] * 10
+ans = []
+
+def go(index,candi,op):
+    global ans
+    if index == len(op) + 1:
+        if len(candi) == len(op) + 1:
+            for i in range(len(op)):
+                if op[i] == "<":
+                    if not (candi[i] < candi[i+1]):
+                        return
+                else:
+                    if not (candi[i] > candi[i+1]):
+                        return
+            ans.append(candi)
+        return
+
+    for i in range(10):
+        if check[i]:
+            continue
+        if index == 0:
+            check[i] = True
+            go(index+1,candi+str(i),op)
+            check[i] = False
+        else:
+            if op[index-1] == "<" and int(candi[index-1]) < i:
+                check[i] = True
+                go(index + 1, candi + str(i), op)
+                check[i] = False
+            elif op[index-1] == ">" and int(candi[index-1]) > i:
+                check[i] = True
+                go(index + 1, candi + str(i), op)
+                check[i] = False
+
+go(0,"",op)
+print(ans[-1],ans[0],sep='\n')
+"""
