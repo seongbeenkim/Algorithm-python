@@ -34,3 +34,43 @@ def match(s,p):
     return 0
 
 print(match(s,p))
+
+
+"""
+s = sys.stdin.readline().rstrip()
+p = sys.stdin.readline().rstrip()
+pi = [0] * len(p)
+
+def get_pi():
+    n = len(p)
+    j = 0
+    for i in range(1,n):
+        while j > 0 and p[i] != p[j]:
+            j = pi[j-1]
+        if p[i] == p[j]:
+            pi[i] = j+1
+            j += 1
+        else:
+            pi[i] = 0
+get_pi()
+
+def check():
+    n = len(s)
+    j = 0
+    ans = []
+    for i in range(n):
+        while j>0 and s[i] != p[j]:
+            j = pi[j-1]
+        if s[i] == p[j]:
+            if j == len(p)-1:
+                ans.append(i-len(p)+1)
+                j = pi[j]
+            else:
+                j += 1
+    return ans
+res = check()
+if len(res) > 0:
+    print(1)
+else:
+    print(0)
+"""
