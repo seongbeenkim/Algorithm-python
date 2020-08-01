@@ -71,3 +71,51 @@ for i in range(m):
         print(idx2-idx, end = " ")
     else:
         print(0, end = " ")
+
+
+# solve 4, but solve 1과 같은데 solve 1은 시간 초과
+"""
+n = int(sys.stdin.readline())
+card = list(map(int,sys.stdin.readline().split()))
+card.sort()
+m = int(sys.stdin.readline())
+numbers = list(map(int,sys.stdin.readline().split()))
+
+def lower_bound(left,right,num):
+    ans =-1
+    while left <= right:
+        mid = (left + right) // 2
+        if card[mid] == num:
+            ans = mid
+            right = mid - 1
+
+        elif card[mid] < num:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return ans
+def upper_bound(left,right,num):
+    ans = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if card[mid] == num:
+            ans = mid + 1
+            left = mid + 1
+
+        elif card[mid] < num:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return ans
+
+for i in range(m):
+    l = lower_bound(0,n-1,numbers[i])
+    r = upper_bound(0,n-1,numbers[i])
+    if l == -1:
+        print(0, end = " ")
+    else:
+        print(r-l, end = " ")
+
+"""
