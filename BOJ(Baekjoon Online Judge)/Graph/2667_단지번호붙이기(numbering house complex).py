@@ -49,3 +49,47 @@ print(len(group))
 group.sort()
 for i in group:
     print(i)
+
+"""
+n = int(sys.stdin.readline())
+
+a = [list(sys.stdin.readline().rstrip()) for _ in range(n)]
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+visited = [[False] * n for _ in range(n)]
+d = [[0]* n for _ in range(n)]
+
+def bfs(i,j):
+    q = deque()
+    q.append((i,j))
+    visited[i][j] = True
+    d[i][j] = 1
+    cnt = 1
+    maximum = 1
+
+    while q:
+        x,y = q.popleft()
+        for k in range(4):
+            nx = dx[k] + x
+            ny = dy[k] + y
+            if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and a[nx][ny] == '1':
+                visited[nx][ny] = True
+                d[nx][ny] = cnt + 1
+                maximum = max(maximum,d[nx][ny])
+                q.append((nx,ny))
+                cnt += 1
+
+    return maximum
+
+town = 0
+ans = []
+for i in range(n):
+    for j in range(n):
+        if a[i][j] == '1' and not visited[i][j]:
+            ans.append(bfs(i,j))
+            town += 1
+
+ans.sort()
+print(town)
+print(*ans, sep="\n")
+"""
