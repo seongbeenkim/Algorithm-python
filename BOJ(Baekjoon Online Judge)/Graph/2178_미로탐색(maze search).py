@@ -27,3 +27,19 @@ def bfs(x,y):
 
 bfs(0,0)
 print(dist[n-1][m-1])
+
+# DFS로 할 경우 모든 경로 다 방문해야 하기 때문에 시간 초과! 최단 거리 문제는 BFS로 풀어야한다.
+"""
+def dfs(i, j):
+    if i == n - 1 and j == m - 1:
+        return
+    for k in range(4):
+        nx = dx[k] + i
+        ny = dy[k] + j
+        if 0 <= nx < n and 0 <= ny < m and a[nx][ny] == '1':
+            if dist[nx][ny] == 0 or dist[nx][ny] > dist[i][j] + 1:
+                dist[nx][ny] = dist[i][j] + 1
+                dfs(nx, ny)
+dist[0][0] = 1
+dfs(0,0)
+"""
