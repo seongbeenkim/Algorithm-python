@@ -38,3 +38,20 @@ dfs(start)
 sys.stdout.write("\n")
 bfs(start)
 sys.stdout.write("\n")
+
+# deque를 사용하는 것이 더 빠르다.
+"""
+def bfs(index):
+    q = deque()
+    q.append(index)
+    visit = [False] * (n + 1)
+    visit[index] = True
+
+    while q:
+        x = q.popleft()
+        print(x, end = " ")
+        for i in a[x]:
+            if not visit[i]:
+                visit[i] = True
+                q.append(i)
+"""
