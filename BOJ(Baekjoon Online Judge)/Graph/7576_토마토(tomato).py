@@ -39,3 +39,19 @@ if is_ripen:
     print(ans)
 else:
     print(-1)
+
+"""
+ans = max([max(i) for i in d])
+is_ripen = True
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == '0' and d[i][j] == -1:
+            is_ripen = False
+            ans = -1
+            break
+    if not is_ripen:
+        break
+
+print(ans)
+
+"""
