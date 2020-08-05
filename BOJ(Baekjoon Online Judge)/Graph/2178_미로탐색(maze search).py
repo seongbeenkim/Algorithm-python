@@ -31,8 +31,6 @@ print(dist[n-1][m-1])
 # DFS로 할 경우 모든 경로 다 방문해야 하기 때문에 시간 초과! 최단 거리 문제는 BFS로 풀어야한다.
 """
 def dfs(i, j):
-    if i == n - 1 and j == m - 1:
-        return
     for k in range(4):
         nx = dx[k] + i
         ny = dy[k] + j
