@@ -55,7 +55,7 @@ These implementations are for learning purposes. They may not be the best effici
   - 이렇게 하는 이유는 int, long, long long 등 자료형의 범위를 넘어가기 때문입니다.   
   
 - #### 불가능하면 -1 출력해야 하는 경우   
-  - -1 출력 시 절대로 함수 또는 프로그램을 종료시키게 코딩하면 안됩니다.   
+  - -1 출력 시 절대로 프로그램을 종료시키게 코딩하면 안됩니다.   
   - ex) Test case 3개 입력 시 3개에 대한 정답이 나와야 하지만 종료하게 만들었을 경우 중간에 바로 종료될 수 있습니다.   
 
   
@@ -66,9 +66,6 @@ These implementations are for learning purposes. They may not be the best effici
     - ex) 특정 문자열 검색, 성+이름 검색 등    하지만 느려서 잘 사용하지 않습니다. 이유는 여기서 확인해보세요. []
   - __Aho-Corasik : 문자열 N개 중에서 패턴 P를 찾습니다. = KMP + Trie__    
     - ex) 이름만 같은 사람 검색    
-
-
-#### ㄹㄹ
 
 
 ## :punch: Coding challenge websites
