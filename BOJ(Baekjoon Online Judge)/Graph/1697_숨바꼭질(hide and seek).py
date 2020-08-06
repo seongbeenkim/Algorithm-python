@@ -3,12 +3,12 @@
 import sys
 from collections import deque
 
-MAX = 200000
+MAX = 200000 # 또는 MAX = max(n,k)*2
 n, k = map(int,sys.stdin.readline().strip().split())
 check = [False] * (MAX+1)
 d = [-1] * (MAX+1)
 
-def bfs(start,end):
+def bfs(start):
     q = deque()
     check[start] = True
     q.append(start)
@@ -21,5 +21,5 @@ def bfs(start,end):
                 check[next] = True
                 q.append(next)
                 d[next] = d[x] + 1
-bfs(n,k)
+bfs(n)
 print(d[k])
