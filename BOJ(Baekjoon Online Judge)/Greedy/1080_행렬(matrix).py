@@ -26,3 +26,23 @@ def check():
 
     return cnt
 print(check())
+
+"""
+cnt = 0
+
+for i in range(n-2):
+    for j in range(m-2):
+        if a[i][j] == b[i][j]:
+            continue
+        else:
+            cnt += 1
+            for x in range(i,i+3):
+                for y in range(j,j+3):
+                    a[x][y] = 1 - a[x][y]
+
+for i in range(n):
+    for j in range(m):
+        if a[i][j] != b[i][j]:
+            cnt = -1
+print(cnt)
+"""
