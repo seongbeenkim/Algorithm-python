@@ -11,14 +11,14 @@ for k in range(1<<n): # 모든 행을 뒤집는 것에 대한 모든 경우의 �
         cnt = 0
         for i in range(n): # 행
             c = a[i][j]
-            if (1<<i) & k:
+            if (1<<i) & k: # 몇 번째 행을 뒤집는지 확인
                 if c == "T":
                     c = "H"
                 else:
                     c = "T"
             if c == "T":
                 cnt += 1
-        sum += min(n-cnt,cnt)
+        sum += min(n-cnt,cnt) # 한 열을 기준으로 행을 다 뒤집었으면, 열을 뒤집을 지 말지를 결정
     if ans > sum:
         ans = sum
 print(ans)
