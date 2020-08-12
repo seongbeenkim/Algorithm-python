@@ -14,6 +14,7 @@ for i in range(k):
     total.append((k,MAX))
 total.sort()
 
+# 힙 구현 직접 할 수 있도록 다시 코드 짜보기
 sum = 0
 for i in total:
     if i[1] == MAX:
