@@ -29,3 +29,21 @@ for i in range(1,n):
         p = lower_bound(d,cnt,a[i])
         d[p] = a[i]
 print(len(d))
+
+
+"""
+def lower_bound(x):
+    i = 0
+    j = len(ans) - 1
+
+    while i <= j:
+        mid = (i+j) // 2
+        if d[mid] == x:
+            j = mid - 1
+        elif d[mid] > x:
+            j = mid - 1
+        else:
+            i = mid + 1
+
+    return i
+"""
