@@ -30,3 +30,9 @@ while j < m:
     j += 1
 
 print(" ".join(str(i) for i in ans))
+
+"""
+ans = a+b
+ans.sort()
+print(*ans)
+"""
