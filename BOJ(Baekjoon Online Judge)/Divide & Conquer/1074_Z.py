@@ -10,8 +10,9 @@ max_index = (2 ** n)-1
 add = ((2 ** n) ** 2) // 4
 
 def go(x, y, des_x, des_y, cnt,add):
-    if x == r and y == c:
-        print(cnt)
+    if x == des_x and y == des_y:
+        if x == r and y == c:
+            print(cnt)
         return
 
     mid_x = (x + des_x) // 2
