@@ -14,7 +14,7 @@ for i in range(n):
 
 def go(in_start,in_end,post_start,post_end):
 
-    if in_start > in_end or post_start > post_end:
+    if in_start > in_end and post_start > post_end:
         return
 
     root = post_order[post_end] # 현재 root 값
