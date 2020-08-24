@@ -44,3 +44,40 @@ def split(start,end):
 
 split(0,len(a)-1)
 print(cnt)
+
+
+"""
+def merge(start,mid,end):
+    global cnt
+    i = start
+    j = mid+1
+    k = start
+    plus = 0
+
+    while i <= mid and j <= end:
+        if a[i] > a[j]:
+            ans[k] = a[j]
+            j += 1
+            plus += 1
+
+        elif a[i] <= a[j]:
+            ans[k] = a[i]
+            i += 1
+            cnt += plus
+
+        k += 1
+
+    while i <= mid:
+        ans[k] = a[i]
+        i += 1
+        k += 1
+        cnt += plus
+
+    while j <= end:
+        ans[k] = a[j]
+        j += 1
+        k += 1
+
+    for i in range(start,end+1):
+        a[i] = ans[i]
+"""
