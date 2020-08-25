@@ -12,25 +12,28 @@ for i in range(m):
 
 start, end = map(int,sys.stdin.readline().split())
 
-def bfs(num):
+def bfs(maximum):
     q = deque()
     q.append(start)
-    check = [False for i in range(n+1)]
+    check = [False for _ in range(n+1)]
     check[start] = True
 
     while q:
         x = q.popleft()
         for to, cost in a[x]:
-            if cost >= num and not check[to]:
+            if cost >= maximum and not check[to]:
                 q.append(to)
                 check[to] = True
-    if check[end]:
-        return True
-    else:
-        return False
+
+            if check[end]:
+                return True
+
+    return False
+
 l = 1
 r = 1000000000
-ans = 0
+ans = 1
+
 while l <= r:
     mid = (l+r) // 2
     if bfs(mid):
