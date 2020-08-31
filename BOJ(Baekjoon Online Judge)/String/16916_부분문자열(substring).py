@@ -74,3 +74,44 @@ if len(res) > 0:
 else:
     print(0)
 """
+
+"""
+pattern = [0] * len(p)
+s_pattern = [0] * len(s)
+
+for i in range(1,len(p)):
+    j = i
+
+    while pattern[j-1] != 0 and p[pattern[j-1]] != p[i]:
+        j = pattern[j-1]
+
+    if pattern[i-1] == 0:
+        if p[i] == p[0]:
+            pattern[i] = 1
+
+    if p[pattern[j-1]] == p[i]:
+        pattern[i] = pattern[j-1] + 1
+
+j = 0
+for i in range(len(s)):
+
+    while j > 0 and s[i] != p[j]:
+        j = pattern[j-1]
+
+    if j == 0:
+        if p[j] == s[i]:
+            s_pattern[i] = 1
+            j += 1
+    else:
+        if p[j] == s[i]:
+            s_pattern[i] = j + 1
+            j += 1
+            if j == len(p):
+                j = pattern[j-1]
+ans = 0
+for i in s_pattern:
+    if i == len(p):
+        ans = 1
+        break
+print(ans)
+"""
