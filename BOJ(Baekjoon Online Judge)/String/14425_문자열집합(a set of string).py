@@ -31,7 +31,7 @@ class Trie:
             return True
         else:
             return False
-
+"""
     def start_with(self, prefix):
         current_node = self.head
         words = []
@@ -54,6 +54,7 @@ class Trie:
                 queue.append(list(node.children.values()))
 
         return words
+"""
 n, m = map(int,sys.stdin.readline().split())
 trie = Trie()
 count = 0
