@@ -1,32 +1,32 @@
 #https://programmers.co.kr/learn/courses/30/lessons/43164
-### 1번 테스트 케이스 통과 못함..
+
 import sys
 
 sys.setrecursionlimit(10 ** 6)
 
+answer = []
 def dfs(index, i, ans, a, n):
-    if len(ans) == n + 1:
-        return ans
+    global answer
 
-    answer = []
+    if len(ans) == n + 1:
+        answer = ans
+        return True
 
     if i not in a:
-        return []
+        return False
 
     for j in range(len(a[i])):
         if a[i][j] != 'None':
             temp = a[i][j]
             a[i][j] = 'None'
-            res = dfs(index + 1, temp, ans + [temp], a, n)
-            if len(res) > len(answer):
-                answer = res
-                if len(answer) == n+1:
-                    return answer
+            if dfs(index + 1, temp, ans + [temp], a, n):
+                return True
             a[i][j] = temp
 
 
 
 def solution(tickets):
+    global answer
     a = dict()
     for i, j in tickets:
         if i not in a:
@@ -36,11 +36,8 @@ def solution(tickets):
             a[i].append(j)
     for i in a:
         a[i].sort()
-    answer = []
-    temp = dfs(0, "ICN", ["ICN"], a, len(tickets))
+    dfs(0, "ICN", ["ICN"], a, len(tickets))
 
-    if len(temp) > len(answer):
-        answer = temp
     return answer
 
 
