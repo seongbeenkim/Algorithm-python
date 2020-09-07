@@ -30,6 +30,22 @@ while q:
             parent[y] = x
             q.append(y)
 
+#dfs
+"""
+def set_level(i):
+    check[i] = True
+
+    if len(a[i]) == 0:
+        return
+
+    for j in a[i]:
+        if not check[j]:
+            d[j] = d[i] + 1
+            parent[j] = i
+            set_level(j)
+
+set_level(1)
+"""
 def lca(x,y):
     if d[x] < d[y]:
         x, y = y, x
