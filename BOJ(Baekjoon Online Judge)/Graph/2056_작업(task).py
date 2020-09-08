@@ -39,3 +39,36 @@ for i in range(1,n+1):
     if ans < d[i]:
         ans = d[i]
 print(ans)
+
+"""
+n = int(sys.stdin.readline())
+
+a = [[] for _ in range(n+1)]
+ind = [0] * (n+1)
+d = [0] * (n+1)
+ans = [0] * (n+1)
+
+for i in range(1,n+1):
+    t, m, *temp = map(int,sys.stdin.readline().split())
+    d[i] = t
+    for j in range(m):
+        a[i].append(temp[j])
+        ind[temp[j]] += 1
+
+q = deque()
+
+for i in range(1,n+1):
+    if ind[i] == 0:
+        q.append(i)
+        ans[i] = d[i]
+
+while q:
+    x = q.popleft()
+    for y in a[x]:
+        ind[y] -= 1
+        ans[y] = max(ans[y], ans[x] + d[y])
+        if ind[y] == 0:
+            q.append(y)
+
+print(max(ans))
+"""
