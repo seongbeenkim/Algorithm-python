@@ -6,7 +6,7 @@ n = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
 
 a = [[] for _ in range(n+1)]
-dist = [[0] * (n+1) for _ in range(n+1)]
+d = [0] * (n+1)
 check = [False] * (n+1)
 heap = []
 ans = 0
@@ -24,8 +24,8 @@ while heap:
     if check[v] == True:
         continue
     check[v] = True
-    ans += cost
+    ans += cost # d[v] = cost
     for i in a[v]:
         if check[i[1]] == False:
             heapq.heappush(heap,i)
-print(ans)
+print(ans) # print(sum(d))
