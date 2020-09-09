@@ -1,40 +1,9 @@
 #https://www.acmicpc.net/problem/11657
 
 import sys
-from collections import deque
 
-n,m = map(int,sys.stdin.readline().split())
-a = [[] for _ in range(n+1)]
-maximum = 10000001
-dist = [maximum] * (n+1)
-
-for i in range(m):
-    s, e, c = map(int,sys.stdin.readline().split())
-    a[s].append((e,c))
-
-dist[1] = 0
-check = [False] *(n+1)
-check[1] = True
-q = deque()
-q.append(1)
-
-while q:
-    x = q.popleft()
-    check[x] = False
-    for e,c in a[x]:
-        if dist[e] > dist[x] + c:
-            dist[e] = dist[x] + c
-            if check[e] == False:
-                q.append(e)
-                check[e] = True
-
-for i in range(2,n+1):
-    if dist[i] == maximum:
-        print(-1)
-    else:
-        print(dist[i])
 # Bellman-Ford
-"""
+
 n,m = map(int,sys.stdin.readline().split())
 a = []
 maximum = 10000001
@@ -61,4 +30,3 @@ else:
             print(-1)
         else:
             print(i)
-"""
