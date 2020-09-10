@@ -5,33 +5,31 @@ import sys, heapq
 n = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
 a = [[] for _ in range(n+1)]
-v = [0] * (n+1)
+INF = 100000001
+dist = [INF] * (n+1)
 check = [False] * (n+1)
-MAX = 10**9
-d = [MAX] * (n+1)
-
+v = [-1] * (n+1)
 for i in range(m):
-    s,e,c = map(int,sys.stdin.readline().split())
-    a[s].append((c,e))
+    s, e, c = map(int,sys.stdin.readline().split())
+    a[s].append([e,c])
 start, end = map(int,sys.stdin.readline().split())
 
+dist[start] = 0
 q = []
-heapq.heappush(q,(0,start))
-d[start] = 0
-v[start] = -1
+heapq.heappush(q,[0,start])
 while q:
-    c1,e1 = heapq.heappop(q)
-    if d[e1] < c1:
+    c, s = heapq.heappop(q)
+    if dist[s] < c:
         continue
-    if check[e1] == False:
-        for c2,e2 in a[e1]:
-            if d[e1] != MAX and d[e2] > d[e1] + c2:
-                d[e2] = d[e1] + c2
-                v[e2] = e1
-                check[e1] = True
-                heapq.heappush(q,(d[e2],e2))
+    if check[s] == False:
+        for e, t in a[s]:
+            if dist[s] != INF and dist[e] > dist[s] + t:
+                dist[e] = dist[s] + t
+                heapq.heappush(q,[dist[e],e])
+                check[s] = True
 
-print(d[end])
+print(dist[end])
+
 x = end
 stack = []
 while x != -1:
@@ -39,3 +37,14 @@ while x != -1:
     x = v[x]
 print(len(stack))
 print(*stack[::-1])
+
+"""
+ans = []
+while v[end] != 0:
+    ans.append(end)
+    end = v[end]
+ans.append(end)
+ans.reverse()
+print(len(ans))
+print(*ans)
+"""
