@@ -63,7 +63,7 @@ These implementations are for learning purposes. They may not be the best effici
 - #### 문자열 알고리즘   
   - __KMP : 문자열 S에서 패턴 P를 찾습니다.__   
   - __Trie : 문자열 N개 중에서 문자열 S를 찾습니다.__   
-    - ex) 특정 문자열 검색, 성+이름 검색 등    하지만 느려서 잘 사용하지 않습니다. 이유는 여기서 확인해보세요. []
+    - ex) 특정 문자열 검색, 성+이름 검색 등    하지만 공간적인 이유에서 잘 사용하지는 않습니다. 이유는 여기서 확인해보세요. [:link:](https://github.com/seongbeenkim/CS-Interview/tree/master/Algorithm#trie)
   - __Aho-Corasik : 문자열 N개 중에서 패턴 P를 찾습니다. = KMP + Trie__    
     - ex) 이름만 같은 사람 검색    
 
