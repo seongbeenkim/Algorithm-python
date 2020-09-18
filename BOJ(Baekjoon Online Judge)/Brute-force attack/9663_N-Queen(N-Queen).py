@@ -34,3 +34,26 @@ def go(row):
             a[row][col] = False
     return ans
 print(go(0))
+
+
+"""
+n = int(sys.stdin.readline())
+
+col = [False] * n
+left_dig = [False] * (2*n-1)
+right_dig = [False] * (2*n-1)
+
+def dfs(i):
+
+    if i == n:
+        return 1
+    ans = 0
+    for j in range(n):
+        if not col[j] and not left_dig[i+j] and not right_dig[i-j+n-1]:
+            col[j] = left_dig[i+j] = right_dig[i-j+n-1] = True
+            ans += dfs(i+1)
+            col[j] = left_dig[i+j] = right_dig[i-j+n-1] = False
+
+    return ans
+print(dfs(0))
+"""
