@@ -18,7 +18,7 @@ def check_col(y,k):
     return True
 
 def check_box(x,y,k):
-    dx = (x//3)*3
+    dx = (x // 3) * 3
     dy = (y // 3) * 3
     for i in range(dx,dx+3):
         for j in range(dy,dy+3):
@@ -36,6 +36,8 @@ def go(index):
             if go(index+1):
                 return True
             a[i][j] = 0
+
+    return False
 
 for i in range(n):
     for j in range(n):
