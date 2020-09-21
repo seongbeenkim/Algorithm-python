@@ -44,4 +44,12 @@ for _ in range(t):
     op = [""] * 10000
     bfs(a,d)
     go(v,op,b)
+
+    """
+    ans = []
+    while v[b] != -1:
+        ans.append(op[b])
+        b = v[b]
+    print(*ans[-1::-1], sep = '')
+    """
     print()
