@@ -1,59 +1,69 @@
 #https://www.acmicpc.net/problem/9944
 
 import sys
-from collections import deque
-
-dx = [0,0,1,-1]
-dy = [1,-1,0,0]
 
 tc = 1
+
 while True:
     try:
-        n, m = map(int,input().split())
+        n, m = map(int,sys.stdin.readline().split())
     except:
         break
-    cnt = 0
-    a = [list(input()) for _ in range(n)]
-    def go(x, y, cnt):
-        ans = -1
 
-        if cnt == 0:
-            return 0
+    dx = [0,0,1,-1]
+    dy = [1,-1,0,0]
+    check = [[False] * m for _ in range(n)]
+    a = [list(sys.stdin.readline().rstrip()) for _ in range(n)]
+    MAX = 901
+    answer = MAX
+    
+    def go(x,y,dir,dist,turn_count):
+        global empty_count, answer
 
-        for k in range(4):
-            nx,ny = x+dx[k],y+dy[k]
-            while 0 <= x < n and 0 <= y < m and a[nx][ny] == '.':
-                a[nx][ny] = '#'
-                cnt -= 1
-                nx += dx[k]
-                ny += dy[k]
-            nx -= dx[k]
-            ny -= dy[k]
-            if not (x == nx and y == ny):
-                temp = go(nx, ny, cnt)
-                if temp != -1:
-                    if ans == -1 or ans > temp+1:
-                        ans = temp+1
-            while not (x == nx and y == ny):
-                a[nx][ny] = '.'
-                cnt += 1
-                nx -= dx[k]
-                ny -= dy[k]
-        return ans
+        if dist == empty_count:
+            answer = min(turn_count,answer)
+            return
+
+        nx = x + dx[dir]
+        ny = y + dy[dir]
+        if 0 <= nx < n and 0 <= ny < m and check[nx][ny] == False and a[nx][ny] == '.':
+            check[nx][ny] = True
+            go(nx, ny, dir, dist + 1,turn_count)
+            check[nx][ny] = False
+        else:
+            for k in range(4):
+                if k == dir:
+                    continue
+                nx = x + dx[k]
+                ny = y + dy[k]
+                if 0 <= nx < n and 0 <= ny < m and check[nx][ny] == False and a[nx][ny] == '.':
+                    check[nx][ny] = True
+                    go(nx,ny,k,dist + 1,turn_count+1)
+                    check[nx][ny] = False
+
+    empty_count = 0
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] == '.':
+                empty_count += 1
+
+    if empty_count == 1:
+        print("Case {}: {}".format(tc,0))
+        tc+=1
+        continue
 
     for i in range(n):
         for j in range(m):
             if a[i][j] == '.':
-                cnt += 1
-    ans = -1
-    for i in range(n):
-        for j in range(m):
-            if a[i][j] == '.':
-                a[i][j] = '#'
-                temp = go(i, j, cnt-1)
-                if temp != -1:
-                    if ans == -1 or ans > temp:
-                        ans = temp
+                a[i][j] = '*'
+                for dir in range(4):
+                    check[i][j] = True
+                    go(i,j,dir,1,1)
+                    check[i][j] = False
                 a[i][j] = '.'
-    print('Case %d: %d'% (tc, ans))
-    tc += 1
+
+    if answer == MAX:
+        print("Case {}: {}".format(tc,-1))
+    else:
+        print("Case {}: {}".format(tc,answer))
+    tc+=1
